@@ -18,3 +18,45 @@
   - Authorized redirect URIs (Users will be redirected to this path after they have authenticated with Google. The path will be appended with the authorization code for access, and must have a protocol. It can’t contain URL fragments, relative paths, or wildcards, and can’t be a public IP address.) を設定する
     - ひとまず <http://localhost:8787/callback> を入力する
   - OAuth client ID を作成して、Client ID と Client secret を控える
+
+## 環境構築
+
+`.dev.vars` に GCP で作成した OAuth client ID と client secret を設定する。
+
+```.dev.vars
+GOOGLE_OAUTH_CLIENT_ID = "YOUR_GOOGLE_OAUTH_CLIENT_ID"
+GOOGLE_OAUTH_CLIENT_SECRET = "YOUR_GOOGLE_OAUTH_CLIENT_SECRET"
+```
+
+bun をインストールする。
+
+```sh
+brew install oven-sh/bun/bun
+```
+
+依存関係をインストールする。
+
+```sh
+bun i
+```
+
+Dev サーバーを起動する。
+
+```sh
+bun run dev
+```
+
+テストリクエストを行う。
+
+```sh
+$ curl http://localhost:8787
+Hello Hono!
+```
+
+## CI
+
+`.github/workflows/deploy.yml` を参照する。
+
+Repository secrets に下記を設定しておく。
+
+![Repository Secrets](https://github.com/user-attachments/assets/7fef3008-e7cd-43d4-9b96-7606dbf1b579)
