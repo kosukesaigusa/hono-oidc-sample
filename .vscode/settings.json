@@ -4,5 +4,5 @@
     "source.organizeImports": "explicit",
     "quickfix.insertSemicolon": "explicit"
   },
-  "cSpell.words": ["datetime", "googleusercontent", "todos"]
+  "cSpell.words": ["datetime", "googleusercontent", "JWKS", "todos"]
 }
