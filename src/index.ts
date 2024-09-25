@@ -60,8 +60,13 @@ app.get('/auth', (c) => {
     `response_type=${responseType}`,
     `client_id=${encodeURIComponent(c.env.GOOGLE_OAUTH_CLIENT_ID)}`,
     `redirect_uri=${encodeURIComponent(`${c.env.BASE_URL}/callback`)}`,
+    // クライアントが要求する情報のスコープを定義する。
     `scope=${encodeURIComponent(
-      'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+      [
+        'openid',
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/userinfo.profile',
+      ].join(' ')
     )}`,
   ]
 
